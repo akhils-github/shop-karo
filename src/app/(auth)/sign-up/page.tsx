@@ -8,15 +8,16 @@ import {
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
- import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 
 import {
-   AuthCredentialsValidator,
-   TAuthCredentialsValidator,
-  } from '@/lib/validators/account-credentials-validator'
+  AuthCredentialsValidator,
+  TAuthCredentialsValidator,
+} from '@/lib/validators/account-credentials-validator'
+import { trpc } from '@/trpc/client'
 
 const Page = () => {
   const {
@@ -27,11 +28,16 @@ const Page = () => {
      resolver: zodResolver(AuthCredentialsValidator),
   })
 
+  const {mutate,isLoading}= trpc.auth.createPayloadUser.useMutation({
+
+  })
+
    const onSubmit = ({
      email,
      password,
    }: TAuthCredentialsValidator) => {
-//    send data to the server
+    mutate({email,password})
+
    }
 
   return (
