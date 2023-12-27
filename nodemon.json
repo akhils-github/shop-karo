@@ -2,7 +2,8 @@
     "watch": [
       "server.ts",
       "src/collections/**/*.ts",
-      "src/trpc/index.ts"
+      "src/trpc/index.ts",
+      "src/trpc/**/*.ts"
     ],
     "exec": "ts-node --project tsconfig.server.json src/server.ts -- -I",
     "ext": "js ts",
