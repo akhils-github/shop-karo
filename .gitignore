@@ -12,8 +12,8 @@ prisma/pg-data/data-*
 # very important
 /**/.env*.local
 /**/.env
-
-!uploads/avatars
+.env
+!uploads/*
 uploads/avatars/*
 !uploads/avatars/avatar0.jpg
 !uploads/avatars/avatar1.jpg
@@ -36,3 +36,6 @@ tests-e2e/cypress/screenshots/
 
 # jest coverage
 coverage/
+
+src/media
+src/product_files

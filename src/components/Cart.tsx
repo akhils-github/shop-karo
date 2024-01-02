@@ -10,10 +10,10 @@ import {
   SheetTrigger,
 } from './ui/sheet'
 import { Separator } from './ui/separator'
+import { formatPrice } from '@/lib/utils'
 import Link from 'next/link'
 import { buttonVariants } from './ui/button'
 import Image from 'next/image'
-import { formatPrice } from '@/lib/utils'
 import { useCart } from '@/hooks/use-cart'
 import { ScrollArea } from './ui/scroll-area'
 import CartItem from './CartItem'
@@ -24,11 +24,16 @@ const Cart = () => {
   const itemCount = items.length
 
   const [isMounted, setIsMounted] = useState<boolean>(false)
-  useEffect(()=>{
+
+  useEffect(() => {
     setIsMounted(true)
-  },[])
+  }, [])
+
   const cartTotal = items.reduce(
-    (total, { product }) => total + product.price, 0)
+    (total, { product }) => total + product.price,
+    0
+  )
+
   const fee = 1
 
   return (
@@ -51,7 +56,10 @@ const Cart = () => {
             <div className='flex w-full flex-col pr-6'>
               <ScrollArea>
                 {items.map(({ product }) => (
-                  <CartItem key={product.id} product={product} />
+                  <CartItem
+                    product={product}
+                    key={product.id}
+                  />
                 ))}
               </ScrollArea>
             </div>

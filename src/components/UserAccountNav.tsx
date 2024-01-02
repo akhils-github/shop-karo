@@ -11,8 +11,9 @@ import {
 } from './ui/dropdown-menu'
 import Link from 'next/link'
 import { useAuth } from '@/hooks/use-auth'
+
 const UserAccountNav = ({ user }: { user: User }) => {
-const { signOut } = useAuth()
+  const { signOut } = useAuth()
 
   return (
     <DropdownMenu>
@@ -45,7 +46,7 @@ const { signOut } = useAuth()
         </DropdownMenuItem>
 
         <DropdownMenuItem
-           onClick={signOut}
+          onClick={signOut}
           className='cursor-pointer'>
           Log out
         </DropdownMenuItem>
